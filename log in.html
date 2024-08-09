@@ -1,0 +1,16 @@
+
+<?php
+$v1=$_POST['na'];
+$v2=$_POST['pa'];
+
+$con=mysql_connect("localhost","root","") or die("not conncted ???");
+mysql_select_db("pharmacy") or die("no such database found");
+$res=mysql_query("select * from user where name='$v1' and pass='$v2'",$con) or die(mysql_error());
+
+$row=mysql_fetch_row($res);
+if($row)
+header("location:main.html");
+echo  "incorect user name or password ???";
+mysql_close($con);
+
+?>
